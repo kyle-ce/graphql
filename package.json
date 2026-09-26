@@ -2,9 +2,12 @@
   "name": "graphql-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "clients/run-all.js",
   "type": "module",
   "scripts": {
+    "server:4000": "node servers/scalars-server.js",
+    "server:4001": "node servers/class-server.js",
+    "client": "node clients/run-all.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
