@@ -1,19 +1,19 @@
 const url = "http://localhost:4001/graphql";
 
-const query = `query _($sides: Int){
-  getDie(sides: $sides) {
+const query = `query _($sides: Int, $qty: Int){
+  rollDie(sides: $sides) {
     sides
-    roll
+    rolls(qty: $qty)
   }
 }`;
 
-export async function fetchClassDie() {
+export async function rollDie({ sides, qty } = {}) {
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query,
-      variables: { sides: 6 },
+      variables: { sides, qty },
     }),
   });
   return res.json();

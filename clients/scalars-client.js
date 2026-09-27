@@ -5,6 +5,7 @@ const query = `query _($dice: Int!, $sides: Int, $quote: String) {
   quoteOfTheDay(quote: $quote)
   random
   rollThreeDice
+
 }`;
 
 export async function fetchScalars() {
@@ -13,7 +14,7 @@ export async function fetchScalars() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query,
-      variables: { dice: 12 },
+      variables: { dice: 6 },
     }),
   });
   return res.json();

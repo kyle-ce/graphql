@@ -5,12 +5,11 @@ import express from "express";
 const schema = buildSchema(`
     type RandomDie {
         sides: Int!
-        roll: Int!
-        rolls(qty: Int!): [Int]
+        rolls(qty: Int): [Int]
     }
 
     type Query{
-        getDie(sides: Int): RandomDie
+        rollDie(sides: Int): RandomDie
     }
     `);
 
@@ -22,7 +21,7 @@ class RandomDie {
   roll() {
     return 1 + Math.floor(Math.random() * this.sides);
   }
-  rolls({ qty }) {
+  rolls({ qty = 1 }) {
     const die = [];
     for (let i = 0; i < qty; i++) {
       die.push(this.roll());
@@ -30,9 +29,10 @@ class RandomDie {
     return die;
   }
 }
+
 const root = {
-  getDie({ sides }) {
-    return new RandomDie(sides || 6);
+  rollDie({ sides = 6 }) {
+    return new RandomDie(sides);
   },
 };
 

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "server:4000": "node servers/scalars-server.js",
-    "server:4001": "node servers/class-server.js",
+    "server:4001": "node servers/dice-server.js",
     "client": "node clients/run-all.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
